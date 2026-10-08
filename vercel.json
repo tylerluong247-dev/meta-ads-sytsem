@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/cron/followups", "schedule": "*/5 * * * *" },
+    { "path": "/api/cron/meta-sync", "schedule": "0 * * * *" }
+  ]
+}

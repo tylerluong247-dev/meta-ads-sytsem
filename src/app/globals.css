@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/*
+  Design tokens.
+  Product UI ("the ledger"): cool paper, deep ink, one brand teal. Colour is reserved for meaning
+  (profit = green, borderline = amber, loss = red) so a glance at the page is a glance at the business.
+  Public landing pages ("the job site"): same ink, set in a sturdy serif, with a per-trade accent.
+*/
+:root {
+  --ink: #14212b;
+  --ink-soft: #4a5a66;
+  --paper: #f5f7f6;
+  --panel: #ffffff;
+  --line: #d8dfdc;
+  --tide: #0e5a63;
+  --tide-dark: #0a444b;
+  --good: #1a7f4b;
+  --good-bg: #e4f4ea;
+  --warn: #a15c00;
+  --warn-bg: #fdf0d8;
+  --bad: #b3261e;
+  --bad-bg: #fbe5e3;
+  --accent: var(--tide);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-tide: var(--tide);
+  --color-tide-dark: var(--tide-dark);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-good-bg: var(--good-bg);
+  --color-warn-bg: var(--warn-bg);
+  --color-bad-bg: var(--bad-bg);
+  --color-accent: var(--accent);
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+html { color-scheme: light; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.num { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--tide); outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* One deliberate moment: the funnel bars grow in once when the dashboard loads. */
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.funnel-bar { transform-origin: left; animation: grow 700ms cubic-bezier(.2,.7,.2,1) both; }
